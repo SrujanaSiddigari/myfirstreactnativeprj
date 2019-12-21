@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { AsyncStorage, Text, View,StyleSheet,ScrollView } from 'react-native';
+import { AsyncStorage, Text, View, StyleSheet, ScrollView, Alert } from 'react-native';
 import config from './config';
 import { BarChart, Grid, ProgressCircle } from 'react-native-svg-charts';
-// import { FontAwesome } from 'react-native-vector-icons/FontAwesome';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 export class DashboardPage extends Component {
   constructor(props) {
     super(props);
@@ -13,35 +13,39 @@ export class DashboardPage extends Component {
 
   render() {
     const fill = 'rgb(134, 65, 244)'
-    const chartData   = [20, 45, 28, 80, 99, 43]
+    const chartData = [20, 45, 28, 80, 99, 43]
     return (
-          <ScrollView>
-          <View style= {styles.container}>
-          <Text style = {styles.txtstyl}>SalesCall</Text>
+
+      <ScrollView>
+        <View>
+          <FontAwesome name="sign-out" style={styles.icon4} onPress={(Alert.alert('logout icon clicked'))}/>
+        </View>
+        <View style={styles.container}>
+          <Text style={styles.txtstyl}>SalesCall</Text>
           <BarChart
-          style={{ height: 200 }}
-          data={ chartData }
-          svg={{ fill }}
-          contentInset={{ top: 30, bottom: 30 }}
-           >
-          <Grid/>
-      </BarChart>
-      <Text style = {styles.txtstyl}>SalesCall in progress</Text>
-       <ProgressCircle
-        style = {{height:200}}
-        progress = {0.7}
-        progressColor= {'rgb(134, 65, 244)'}
-        >
-       </ProgressCircle>
-       
-       <Text style = {styles.txtstyl}>SalesCall complete</Text>
-       <ProgressCircle
-        style = {{height:200}}
-        progress = {0.9}
-        progressColor= {'rgb(51, 244, 41)'}
-        >
-       </ProgressCircle>
-      </View>
+            style={{ height: 200 }}
+            data={chartData}
+            svg={{ fill }}
+            contentInset={{ top: 30, bottom: 30 }}
+          >
+            <Grid />
+          </BarChart>
+          <Text style={styles.txtstyl}>SalesCall in progress</Text>
+          <ProgressCircle
+            style={{ height: 200 }}
+            progress={0.7}
+            progressColor={'rgb(134, 65, 244)'}
+          >
+          </ProgressCircle>
+
+          <Text style={styles.txtstyl}>SalesCall complete</Text>
+          <ProgressCircle
+            style={{ height: 200 }}
+            progress={0.9}
+            progressColor={'rgb(51, 244, 41)'}
+          >
+          </ProgressCircle>
+        </View>
       </ScrollView>
     );
   }
@@ -72,13 +76,22 @@ export class DashboardPage extends Component {
   }
 }
 const styles = StyleSheet.create({
-container:{
-  marginLeft:10,
-  marginRight:10
-},
-txtstyl:{
-  fontSize:48,
-  marginBottom:12,
-  marginTop:12
-}
+  container: {
+    marginLeft: 10,
+    marginRight: 10
+  },
+  txtstyl: {
+    fontSize: 48,
+    marginBottom: 12,
+    marginTop: 12
+  },
+  icon4: {
+    left: 400,
+    position: "absolute",
+    color: "rgba(128,128,128,1)",
+    fontSize: 29,
+    height: 32,
+    width: 32,
+    top: 0
+  }
 });
