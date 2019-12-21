@@ -18,7 +18,7 @@ export class DashboardPage extends Component {
 
       <ScrollView>
         <View>
-          <FontAwesome name="sign-out" style={styles.icon4} onPress={(Alert.alert('logout icon clicked'))}/>
+          <FontAwesome name="sign-out" style={styles.icon4}/>
         </View>
         <View style={styles.container}>
           <Text style={styles.txtstyl}>SalesCall</Text>
