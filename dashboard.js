@@ -15,7 +15,6 @@ export class DashboardPage extends Component {
     const fill = 'rgb(134, 65, 244)'
     const chartData   = [20, 45, 28, 80, 99, 43]
     return (
-         
           <ScrollView>
           <View style= {styles.container}>
           <Text style = {styles.txtstyl}>SalesCall</Text>
