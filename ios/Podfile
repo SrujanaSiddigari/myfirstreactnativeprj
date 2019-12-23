@@ -38,6 +38,9 @@ target 'Repworld' do
 
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
+  pod 'react-native-simple-toast', :path => '../node_modules/react-native-simple-toast'
+
+
   target 'RepworldTests' do
     inherit! :search_paths
     # Pods for testing

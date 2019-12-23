@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import { AsyncStorage, Text, View, StyleSheet, ScrollView, Alert } from 'react-native';
+import { AsyncStorage, Text, View, StyleSheet, ScrollView, Alert, TouchableOpacity } from 'react-native';
 import config from './config';
 import { BarChart, Grid, ProgressCircle } from 'react-native-svg-charts';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import  { LoginPage }  from './login.js';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 export class DashboardPage extends Component {
   constructor(props) {
     super(props);
@@ -10,16 +13,20 @@ export class DashboardPage extends Component {
       auth_token: ''
     };
   }
-
+  clickedButton = () =>{
+    AsyncStorage.removeItem('auth_token');
+    this.props.navigation.navigate('Home');
+    // Alert.alert('logout clicked');
+  }
   render() {
     const fill = 'rgb(134, 65, 244)'
     const chartData = [20, 45, 28, 80, 99, 43]
     return (
 
       <ScrollView>
-        <View>
-          <FontAwesome name="sign-out" style={styles.icon4}/>
-        </View>
+        <TouchableOpacity onPress={(this.clickedButton)} style={styles.icon4}>
+            <FontAwesome name="sign-out" style={styles.logouticn}/>
+        </TouchableOpacity>
         <View style={styles.container}>
           <Text style={styles.txtstyl}>SalesCall</Text>
           <BarChart
@@ -85,13 +92,27 @@ const styles = StyleSheet.create({
     marginBottom: 12,
     marginTop: 12
   },
+  logouticn:{
+    fontSize: 32,
+    height: 32,
+    width: 32
+  },
   icon4: {
     left: 400,
     position: "absolute",
     color: "rgba(128,128,128,1)",
-    fontSize: 29,
+    fontSize: 90,
     height: 32,
     width: 32,
     top: 0
   }
 });
+const navigationPages = createStackNavigator({
+        // Home : LoginPage,
+        // Dasboard : DashboardPage
+        Home: {
+          screen: () => <LoginPage/>
+       }
+});
+const navigate = createAppContainer(navigationPages);
+export default navigate;
