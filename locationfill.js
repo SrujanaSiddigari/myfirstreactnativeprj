@@ -32,14 +32,14 @@ export default class Location extends Component {
                     <ModalContent style={{ width: 400, height: 400 }}>
                         <GooglePlacesAutocomplete
                             placeholder='Search'
-                            minLength={1} // minimum length of text to search
+                            minLength={1} 
                             autoFocus={false}
-                            returnKeyType={'search'} // Can be left out for default return key https://facebook.github.io/react-native/docs/textinput.html#returnkeytype
-                            keyboardAppearance={'light'} // Can be left out for default keyboardAppearance https://facebook.github.io/react-native/docs/textinput.html#keyboardappearance
+                            returnKeyType={'search'} 
+                            keyboardAppearance={'light'} 
                             listViewDisplayed='false'    // true/false/undefined
                             fetchDetails={true}
-                            renderDescription={row => row.description} // custom description render
-                            onPress={(data, details = null) => { // 'details' is provided when fetchDetails = true
+                            renderDescription={row => row.description} 
+                            onPress={(data, details = null) => { 
                                 console.log(data, details);
                                 this.setState({ setlocation: data.description });
                             }}
@@ -47,8 +47,8 @@ export default class Location extends Component {
 
                             query={{
                                 key: 'AIzaSyA7quHv20PDJRm_PqL2jatrfR86wQ0NbsE',
-                                language: 'en', // language of the results
-                                types: 'address' // default: 'geocode'
+                                language: 'en', 
+                                types: 'address' 
                             }}
 
                             styles={{
